@@ -1,8 +1,6 @@
-package com.ay.entity;
+package com.ay.entity.common;
 
 import lombok.Data;
-
-import java.util.TreeMap;
 
 /**
  * @author WuDa
