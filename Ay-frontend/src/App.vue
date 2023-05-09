@@ -1,12 +1,13 @@
 <script setup>
-import {login} from "@/api/login";
-
-function Login(){
-    const {body} = login({
-        username:"admin",
-        password:123456
-    })
-    console.log(body)
+// import {login} from "@/api/login";
+import request  from "./utils/http/request";
+async function Login(){
+    let form = {
+            username:"admin",
+            password:123456
+    }
+    let data = await request.post('http://localhost:8080/api/auth/login',form)
+    console.log(data)
 }
 
 </script>

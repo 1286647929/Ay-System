@@ -53,36 +53,36 @@ import qs from 'qs'
 // )
 
 const request = {
-    async get(url, data) {
-        try {
-            let res = await axios.get(url, {params: data})
-            res = res.datareturn
-            new Promise((resolve) => {
-                if (res.code === 0) {
-                    resolve(res)
-                } else {
-                    resolve(res)
-                }
+    /**
+     * @param get请求
+     * @param url
+     * @param params
+     * @returns {Promise<unknown>}
+     */
+    get:function (url,params) {
+        return new Promise((resolve, reject) => {
+            axios.get(url,{params:params}).then((res) => {
+                resolve(res)
+            }).catch((err)  => {
+                reject(err)
             })
-        } catch (err) {
-            ElMessage('服务器出错！')
-            console.log(err)
-        }
-    }, async post(url, data) {
-        try {
-            let res = await axios.post(url, qs.stringify(data))
-            res = res.datareturn
-            new Promise((resolve, reject) => {
-                if (res.code === 0) {
-                    resolve(res)
-                } else {
-                    reject(res)
-                }
+        })
+    },
+
+    /**
+     * @param post请求
+     * @param url
+     * @param data
+     * @returns {Promise<unknown>}
+     */
+    post:function (url,data) {
+        return new Promise((resolve, reject) => {
+            axios.post(url,qs.stringify(data)).then((res) => {
+                resolve(res)
+            }).catch((err)  => {
+                reject(err)
             })
-        } catch (err) {// return (e.message)alert('服务器出错')console.log(err)}},
-            ElMessage('服务器出错！')
-            console.log(err)
-        }
+        })
     }
 }
-export {request}
+export default request
