@@ -8,3 +8,11 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+
+#设置请求与响应都使用自定义编码格式
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true

@@ -1,8 +1,5 @@
 import axios from 'axios'
-import {ElMessage} from "element-plus";
 import qs from 'qs'
-
-// const qs = require('qs')
 
 
 // // 创建axios的对象
