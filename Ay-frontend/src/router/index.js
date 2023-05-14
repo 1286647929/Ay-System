@@ -18,6 +18,11 @@ const router = createRouter({
           component:()=>import('@/components/welcome/RegisterPage.vue')
         }
       ]
+    },
+    {
+      path:'/index',
+      name:'index',
+      component:()=>import('@/views/index.vue')
     }
   ]
 })
