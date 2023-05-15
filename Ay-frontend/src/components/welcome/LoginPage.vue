@@ -30,25 +30,27 @@ function Register(){
         <div style="font-size: 13px;margin-top:15px;color: coral">请在以下区域填写您的账号和密码</div>
     </div>
     <el-divider border-style="double" />
-    <el-form :model="loginForm" label-width="120px" label-position="right">
+    <el-form :model="loginForm" label-width="60px" label-position="right">
         <el-form-item label="账号">
             <el-input v-model="loginForm.username"></el-input>
         </el-form-item>
         <el-form-item label="密码" style="text-align: center">
             <el-input v-model="loginForm.password"></el-input>
         </el-form-item>
-        <el-form-item label="是否记住密码" prop="delivery">
+        <el-form-item>
             <el-switch v-model="loginForm.remember" />
+            <el-text style="margin-left: 10px">记住密码</el-text>
         </el-form-item>
         <el-form-item>
-            <div style="width: 50%;text-align: center">
-                <el-button type="primary" @click="Login(loginForm)">登录</el-button>
-            </div>
-            <div style="width: 50%;text-align: center">
-                <el-button type="primary" @click="Register()">立即注册</el-button>
+            <div style="width: 100%;text-align: center">
+                <el-button style="width: 100%" type="primary" @click="Login(loginForm)">登录</el-button>
             </div>
         </el-form-item>
-
+        <el-form-item>
+            <div style="width: 100%;text-align: center">
+                <el-button style="width: 100%" type="default" @click="Register">现在去注册</el-button>
+            </div>
+        </el-form-item>
     </el-form>
 </template>
 
