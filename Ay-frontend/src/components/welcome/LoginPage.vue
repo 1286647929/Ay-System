@@ -28,30 +28,27 @@ const loginRules = {
 };
 
 function handleLogin() {
-    proxy.$refs.loginRef.validate((valid) => {
+    proxy.$refs.loginRef.validate(async (valid) => {
         if (valid) {
             loading.value = true;
             // 勾选了需要记住密码设置在 cookie 中设置记住用户名和密码
-            if (loginForm.value.rememberMe) {
-                Cookies.set("username", loginForm.value.username, {expires: 30});
-                Cookies.set("password", encrypt(loginForm.value.password), {expires: 30});
-                Cookies.set("rememberMe", loginForm.value.rememberMe, {expires: 30});
-            } else {
-                // 否则移除
-                Cookies.remove("username");
-                Cookies.remove("password");
-                Cookies.remove("rememberMe");
-            }
+            // if (loginForm.value.rememberMe) {
+            //     Cookies.set("username", loginForm.value.username, {expires: 30});
+            //     Cookies.set("password", encrypt(loginForm.value.password), {expires: 30});
+            //     Cookies.set("rememberMe", loginForm.value.rememberMe, {expires: 30});
+            // } else {
+            //     // 否则移除
+            //     Cookies.remove("username");
+            //     Cookies.remove("password");
+            //     Cookies.remove("rememberMe");
+            // }
             // 调用action的登录方法
-            userStore.login(loginForm.value).then(() => {
-                router.push({path: "/"});
-            }).catch(() => {
+            let rs = await userStore.login(loginForm.value)
+            console.log(rs)
+            if (rs.success){
                 loading.value = false;
-                // 重新获取验证码
-                // if (captchaEnabled.value) {
-                //     getCode();
-                // }
-            });
+                router.push({path:'/index'})
+            }
         }
     });
 }

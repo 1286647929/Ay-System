@@ -15,11 +15,17 @@ const useUserStore = defineStore(
         getters: {},
         actions: {
             //登录
-            login(userInfo) {
-                const username = userInfo.username.trim()
-                const password = userInfo.password
-                const code = userInfo.code
-                const uuid = userInfo.uuid
+            async login(userInfo) {
+                const data = {
+                    username:userInfo.username.trim(),
+                    password:userInfo.password
+                }
+                // const username = userInfo.username.trim()
+                // const password = userInfo.password
+                // const code = userInfo.code
+                // const uuid = userInfo.uuid
+                const rs = await login(data)
+                return rs.data
             },
         }
     }
