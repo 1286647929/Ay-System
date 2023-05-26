@@ -2,10 +2,10 @@ package com.ay.entity;
 
 import com.ay.entity.common.BaseEntity;
 import com.ay.entity.common.SysRole;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +15,7 @@ import java.util.List;
  * @data 2023/5/5
  **/
 @Data
+@TableName("sys_user")
 public class SysUser extends BaseEntity {
     private static final long serialVersionUID = 1L;
     /** 用户ID */
@@ -53,15 +54,11 @@ public class SysUser extends BaseEntity {
     /** 最后登录时间 */
     private Date loginDate;
 
-
     /** 角色对象 */
     private List<SysRole> roles;
 
     /** 角色组 */
     private Long[] roleIds;
-
-    /** 岗位组 */
-    private Long[] postIds;
 
     /** 角色ID */
     private Long roleId;
