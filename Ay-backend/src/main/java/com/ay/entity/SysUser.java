@@ -1,7 +1,7 @@
 package com.ay.entity;
 
 import com.ay.entity.common.BaseEntity;
-import com.ay.entity.common.SysRole;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -19,6 +19,7 @@ import java.util.List;
 public class SysUser extends BaseEntity {
     private static final long serialVersionUID = 1L;
     /** 用户ID */
+    @TableId
     private Long userId;
 
     /** 用户账号 */

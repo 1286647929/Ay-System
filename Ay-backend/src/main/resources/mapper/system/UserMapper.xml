@@ -24,7 +24,7 @@
 		<result property="remark"       column="remark"       />
 		<collection  property="roles"   javaType="java.util.List" resultMap="RoleResult" />
 	</resultMap>
-	
+
 	<resultMap id="RoleResult" type="SysRole">
 		<id     property="roleId"       column="role_id"        />
 		<result property="roleName"     column="role_name"      />
@@ -33,6 +33,18 @@
 		<result property="dataScope"     column="data_scope"    />
 		<result property="status"       column="status"    />
 	</resultMap>
+
+	<sql id="selectUserVo">
+		select u.user_id, u.user_name, u.nick_name, u.email, u.avatar, u.phonenumber, u.password, u.sex, u.status, u.del_flag, u.login_ip, u.login_date, u.create_by, u.create_time, u.remark,
+		       r.role_id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.status as role_status
+		from sys_user u
+			     left join sys_user_role ur on u.user_id = ur.user_id
+			     left join sys_role r on r.role_id = ur.role_id
+	</sql>
+
+	<select id="findAll" resultType="SysUser">
+		<include refid="selectUserVo"></include>
+	</select>
 
 
 </mapper>

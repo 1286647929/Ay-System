@@ -2,13 +2,16 @@ package com.ay.mapper;
 
 import com.ay.entity.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author WuDa
  * @data 2023/5/5
  **/
-@Repository
+@Mapper
 public interface UserMapper extends BaseMapper<SysUser> {
+    List<SysUser> findAll();
 
 }

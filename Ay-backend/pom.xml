@@ -14,7 +14,7 @@
     <name>Ay-backend</name>
     <description>Ay-backend</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -33,7 +33,6 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.3.1</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.mysql</groupId>
