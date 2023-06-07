@@ -1,6 +1,7 @@
 package com.ay.entity;
 
 import com.ay.entity.common.BaseEntity;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -56,12 +57,15 @@ public class SysUser extends BaseEntity {
     private Date loginDate;
 
     /** 角色对象 */
+    @TableField(exist = false)  //忽略此字段注解
     private List<SysRole> roles;
 
     /** 角色组 */
+    @TableField(exist = false)
     private Long[] roleIds;
 
     /** 角色ID */
+    @TableField(exist = false)
     private Long roleId;
 
     @Override
@@ -84,6 +88,7 @@ public class SysUser extends BaseEntity {
                 .append("updateBy", getUpdateBy())
                 .append("updateTime", getUpdateTime())
                 .append("remark", getRemark())
+                .append("roles",getRoles())
                 .toString();
     }
 }

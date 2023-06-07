@@ -2,11 +2,11 @@ package com.ay.entity;
 
 import com.ay.entity.common.BaseEntity;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
-public class SysRole extends BaseEntity
-{
+@Data
+public class SysRole extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     /** 角色ID */

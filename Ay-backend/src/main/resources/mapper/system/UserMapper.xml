@@ -42,8 +42,13 @@
 			     left join sys_role r on r.role_id = ur.role_id
 	</sql>
 
-	<select id="findAll" resultType="SysUser">
+	<select id="findAll" resultMap="SysUserResult">
 		<include refid="selectUserVo"></include>
+	</select>
+
+	<select id="getUserByUserNameAndPassword" resultMap="SysUserResult">
+		<include refid="selectUserVo"></include>
+		where u.user_name = #{userName} and u.password = #{password}
 	</select>
 
 

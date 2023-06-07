@@ -17,4 +17,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
     public List<SysUser> findAll() {
         return userMapper.findAll();
     }
+
+    @Override
+    public SysUser findUserById(Integer id) {
+        return userMapper.getByUserId(id);
+    }
 }
