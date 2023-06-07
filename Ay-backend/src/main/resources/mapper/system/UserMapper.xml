@@ -46,6 +46,11 @@
 		<include refid="selectUserVo"></include>
 	</select>
 
+	<select id="getByUserId" resultMap="SysUserResult">
+		<include refid="selectUserVo"></include>
+		where u.user_id = #{id}
+	</select>
+
 	<select id="getUserByUserNameAndPassword" resultMap="SysUserResult">
 		<include refid="selectUserVo"></include>
 		where u.user_name = #{userName} and u.password = #{password}

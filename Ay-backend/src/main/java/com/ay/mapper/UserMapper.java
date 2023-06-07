@@ -15,6 +15,8 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<SysUser> {
     List<SysUser> findAll();
 
+    SysUser getByUserId(@Param("id") Integer id);
+
     SysUser getUserByUserNameAndPassword(@Param("userName") String userName, @Param("password") String password);
 
 }

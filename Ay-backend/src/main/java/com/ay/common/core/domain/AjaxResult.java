@@ -1,4 +1,4 @@
-package com.ay.common.core;
+package com.ay.common.core.domain;
 
 
 import com.ay.common.utils.HttpStatus;
