@@ -1,5 +1,6 @@
 package com.ay;
 
+import com.ay.common.utils.sign.RSA;
 import com.ay.entity.SysUser;
 import com.ay.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -12,9 +13,16 @@ class AyBackendApplicationTests {
     private UserService userService;
 
     @Test
-    void contextLoads() {
+    void contextLoads() throws Exception {
+        String s = RSA.rsaEncryptByPublic("123456");
+        System.out.println(s);
+
+        String s1 = RSA.rsaDecryptByPrivate(s);
+        System.out.println(s1);
 //        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 //        System.out.println(encoder.encode("123456"));
+        // 生成一对公钥和私钥，其中Map对象 (private=私钥, public=公钥)
+//        System.out.println(SaSecureUtil.rsaGenerateKeyPair());
     }
 
     @Test

@@ -22,4 +22,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
     public SysUser findUserById(Integer id) {
         return userMapper.getByUserId(id);
     }
+
+    @Override
+    public SysUser authenLogin(String username, String password) {
+        return userMapper.getUserByUserNameAndPassword(username,password);
+    }
 }

@@ -9,4 +9,6 @@ public interface UserService extends IService<SysUser> {
     List<SysUser> findAll();
 
     SysUser findUserById(Integer id);
+
+    SysUser authenLogin(String username, String password);
 }
