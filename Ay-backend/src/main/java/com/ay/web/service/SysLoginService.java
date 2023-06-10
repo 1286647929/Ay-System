@@ -29,6 +29,9 @@ public class SysLoginService {
      * @return 结果
      */
     public String login(String userName, String password,String code,String uuid){
+        //校验验证码
+        validateCaptcha(userName, code, uuid);
+
         //用户验证
         SysUser sysUser = userService.authenLogin(userName);
         if(sysUser!=null){

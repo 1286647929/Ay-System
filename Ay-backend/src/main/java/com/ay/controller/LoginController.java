@@ -17,16 +17,6 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/test/{userid}")
-    public AjaxResult test(@PathVariable("userid") Integer id){
-//        try {
-////            StpUtil.checkLogin();
-//        }catch (Exception e){
-//
-//        }
-        return AjaxResult.success(userService.findUserById(id));
-    }
-
     @PostMapping("/login")
     public AjaxResult login(@RequestBody LoginBody loginBody){
         AjaxResult ajax = AjaxResult.success();
