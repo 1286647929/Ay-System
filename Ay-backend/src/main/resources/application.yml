@@ -8,21 +8,17 @@ server:
       force: true
 
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ay_system?useUnicode=true&characterEncoding=utf-8
-    username: root
-    password: 123456
-
-    # redis配置
+  data:
+    #  #redis配置 redis在 data 下面
     redis:
       # Redis数据库索引（默认为0）
       database: 3
-      # Redis服务器地址
+      #redis服务器地址
+      #    host: 1.15.181.152
       host: 1.15.181.152
-      # Redis服务器连接端口
+      #端口
       port: 6379
-      # Redis服务器连接密码（默认为空）
+      #密码
       password: w.c.520.
       # 连接超时时间
       timeout: 10s
@@ -36,6 +32,17 @@ spring:
           max-idle: 10
           # 连接池中的最小空闲连接
           min-idle: 0
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
+    encoding: GBK
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ay_system?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
 
 mybatis-plus:
   configuration:
@@ -47,7 +54,7 @@ mybatis-plus:
   type-aliases-package: com.ay.entity
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapper-locations: classpath*:/mapper/**/*.xml
-#  mapper-locations: classpath*:/mapper/**/*.xml
+  #  mapper-locations: classpath*:/mapper/**/*.xml
 
   # 全局配置id自增  =>
   global-config:

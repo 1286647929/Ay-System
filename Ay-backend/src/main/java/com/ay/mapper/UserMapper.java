@@ -17,6 +17,6 @@ public interface UserMapper extends BaseMapper<SysUser> {
 
     SysUser getByUserId(@Param("id") Integer id);
 
-    SysUser getUserByUserNameAndPassword(@Param("userName") String userName, @Param("password") String password);
+    SysUser getUserByUserNameAndPassword(@Param("userName") String userName);
 
 }

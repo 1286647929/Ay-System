@@ -24,7 +24,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
     }
 
     @Override
-    public SysUser authenLogin(String username, String password) {
-        return userMapper.getUserByUserNameAndPassword(username,password);
+    public SysUser authenLogin(String userName) {
+        return userMapper.getUserByUserNameAndPassword(userName);
     }
+
 }

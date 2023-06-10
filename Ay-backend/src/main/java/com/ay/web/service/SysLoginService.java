@@ -1,8 +1,12 @@
 package com.ay.web.service;
 
 import cn.dev33.satoken.stp.StpUtil;
+import com.ay.common.constant.CacheConstants;
 import com.ay.common.core.redis.RedisCache;
-import com.ay.common.exception.user.UserUserNameOrPasswordNotMatchException;
+import com.ay.common.exception.user.CaptchaException;
+import com.ay.common.exception.user.CaptchaExpireException;
+import com.ay.common.exception.user.UserPasswordNotMatchException;
+import com.ay.common.utils.StringUtils;
 import com.ay.common.utils.sign.RSA;
 import com.ay.entity.SysUser;
 import com.ay.service.UserService;
@@ -18,22 +22,49 @@ public class SysLoginService {
     private RedisCache redisCache;
     /**
      *
-     * @param username 用户名
+     * @param userName 用户名
      * @param password 密码
      * @param code 验证码
      * @param uuid 唯一标识
      * @return 结果
      */
-    public String login(String username, String password,String code,String uuid){
+    public String login(String userName, String password,String code,String uuid){
         //用户验证
-        String decryptpassword = RSA.rsaDecryptByPrivate(password);
-        SysUser sysUser = userService.authenLogin(username, decryptpassword);
+        SysUser sysUser = userService.authenLogin(userName);
         if(sysUser!=null){
-            StpUtil.login(sysUser.getUserId());
-            String tokenValue = StpUtil.getTokenValue();
-            return tokenValue;
+            String decryptPassword = RSA.rsaDecryptByPrivate(sysUser.getPassword());
+            if (password.equals(decryptPassword)){
+                StpUtil.login(sysUser.getUserId());
+                 return StpUtil.getTokenValue();
+            }else {
+                throw new UserPasswordNotMatchException();
+            }
         }else {
-            throw new UserUserNameOrPasswordNotMatchException();
+            throw new UserPasswordNotMatchException();
+        }
+    }
+
+
+    /**
+     * 校验验证码
+     *
+     * @param username 用户名
+     * @param code 验证码
+     * @param uuid 唯一标识
+     * @return 结果
+     */
+    public void validateCaptcha(String username, String code, String uuid)
+    {
+        String verifyKey = CacheConstants.CAPTCHA_CODE_KEY + StringUtils.nvl(uuid, "");
+        String captcha = redisCache.getCacheObject(verifyKey);
+        redisCache.deleteObject(verifyKey);
+        if (captcha == null)
+        {
+            throw new CaptchaExpireException();
+        }
+        if (!code.equalsIgnoreCase(captcha))
+        {
+            throw new CaptchaException();
         }
     }
 }

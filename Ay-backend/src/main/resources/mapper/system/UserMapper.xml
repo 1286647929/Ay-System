@@ -53,7 +53,7 @@
 
 	<select id="getUserByUserNameAndPassword" resultMap="SysUserResult">
 		<include refid="selectUserVo"></include>
-		where u.user_name = #{userName} and u.password = #{password}
+		where u.user_name = #{userName}
 	</select>
 
 
