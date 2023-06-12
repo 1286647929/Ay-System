@@ -68,6 +68,15 @@ public class SysUser extends BaseEntity {
     @TableField(exist = false)
     private Long roleId;
 
+    public boolean isAdmin(){
+        return isAdmin(this.userId);
+    }
+
+    public static boolean isAdmin(Long userId)
+    {
+        return userId != null && 1L == userId;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
