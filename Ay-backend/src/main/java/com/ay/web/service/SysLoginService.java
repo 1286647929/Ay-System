@@ -30,7 +30,7 @@ public class SysLoginService {
      */
     public String login(String userName, String password,String code,String uuid){
         //校验验证码
-        validateCaptcha(userName, code, uuid);
+//        validateCaptcha(userName, code, uuid);
 
         //用户验证
         SysUser sysUser = userService.authenLogin(userName);
@@ -38,7 +38,7 @@ public class SysLoginService {
             String decryptPassword = RSA.rsaDecryptByPrivate(sysUser.getPassword());
             if (password.equals(decryptPassword)){
                 StpUtil.login(sysUser.getUserId());
-                 return StpUtil.getTokenValue();
+                return StpUtil.getTokenValue();
             }else {
                 throw new UserPasswordNotMatchException();
             }

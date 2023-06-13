@@ -3,11 +3,16 @@ package com.ay.controller;
 import com.ay.common.constant.Constants;
 import com.ay.common.core.domain.AjaxResult;
 import com.ay.common.core.domain.model.LoginBody;
+import com.ay.common.utils.SecurityUtils;
 import com.ay.entity.SysUser;
-import com.ay.service.UserService;
+import com.ay.service.ISysMenuService;
 import com.ay.web.service.SysLoginService;
+import com.ay.web.service.SysPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Set;
 
@@ -18,7 +23,13 @@ public class LoginController {
     private SysLoginService loginService;
 
     @Autowired
-    private UserService userService;
+    private ISysMenuService menuService;
+
+    @Autowired
+    private SysPermissionService permissionService;
+
+    @Autowired
+    private SecurityUtils securityUtils;
 
     /**
      *登录方法
@@ -41,10 +52,10 @@ public class LoginController {
      *
      * @return 用户信息
      */
-    @GetMapping("getInfo")
+    @GetMapping("/getInfo")
     public AjaxResult getInfo()
     {
-        SysUser user = SecurityUtils.getLoginUser().getUser();
+        SysUser user = securityUtils.getLoginUser();
         // 角色集合
         Set<String> roles = permissionService.getRolePermission(user);
         // 权限集合

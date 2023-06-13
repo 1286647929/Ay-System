@@ -1,16 +1,23 @@
 package com.ay.common.utils;
 
-
 import cn.dev33.satoken.stp.StpUtil;
 import com.ay.common.exception.ServiceException;
+import com.ay.entity.SysUser;
+import com.ay.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * 安全服务工具类
  *
  * @author campus
  */
-public class SecurityUtils
-{
+@Component
+public class SecurityUtils {
+
+    @Autowired
+    private UserService userService;
+
     /**
      * 用户ID
      **/
@@ -18,7 +25,7 @@ public class SecurityUtils
     {
         try
         {
-            return getLoginUser().getUserId();
+            return (Long) StpUtil.getTokenInfo().getLoginId();
         }
         catch (Exception e)
         {
@@ -30,11 +37,11 @@ public class SecurityUtils
     /**
      * 获取用户账户
      **/
-    public static String getUsername()
+    public String getUsername()
     {
         try
         {
-            return getLoginUser().getUsername();
+            return getLoginUser().getUserName();
         }
         catch (Exception e)
         {
@@ -45,11 +52,12 @@ public class SecurityUtils
     /**
      * 获取用户
      **/
-    public static LoginUser getLoginUser()
+    public SysUser getLoginUser()
     {
         try
         {
-            return (LoginUser) StpUtil.getTokenInfo();
+            System.out.println(StpUtil.getTokenInfo().getLoginId());
+            return userService.findUserById(Integer.valueOf(String.valueOf(StpUtil.getTokenInfo().getLoginId())));
         }
         catch (Exception e)
         {
