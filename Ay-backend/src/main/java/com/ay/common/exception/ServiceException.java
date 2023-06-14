@@ -3,7 +3,7 @@ package com.ay.common.exception;
 /**
  * 业务异常
  * 
- * @author campus
+ * @author ruoyi
  */
 public final class ServiceException extends RuntimeException
 {
@@ -49,6 +49,7 @@ public final class ServiceException extends RuntimeException
         return detailMessage;
     }
 
+    @Override
     public String getMessage()
     {
         return message;

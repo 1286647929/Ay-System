@@ -3,11 +3,10 @@ package com.ay.common.exception;
 /**
  * 全局异常
  * 
- * @author campus
+ * @author ruoyi
  */
 public class GlobalException extends RuntimeException
 {
-
     private static final long serialVersionUID = 1L;
 
     /**
@@ -45,6 +44,7 @@ public class GlobalException extends RuntimeException
         return this;
     }
 
+    @Override
     public String getMessage()
     {
         return message;

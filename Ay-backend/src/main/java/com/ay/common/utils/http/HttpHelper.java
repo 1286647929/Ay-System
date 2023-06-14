@@ -1,6 +1,5 @@
 package com.ay.common.utils.http;
 
-
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +13,8 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * 通用http工具封装
- *
- * @author campus
+ * 
+ * @author ruoyi
  */
 public class HttpHelper
 {

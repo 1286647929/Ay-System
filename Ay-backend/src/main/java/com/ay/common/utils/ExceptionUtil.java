@@ -1,6 +1,5 @@
 package com.ay.common.utils;
 
-
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.io.PrintWriter;
@@ -9,7 +8,7 @@ import java.io.StringWriter;
 /**
  * 错误信息处理类。
  *
- * @author campus
+ * @author ruoyi
  */
 public class ExceptionUtil
 {

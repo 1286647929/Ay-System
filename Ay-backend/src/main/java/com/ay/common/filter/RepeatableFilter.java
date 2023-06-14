@@ -1,6 +1,5 @@
 package com.ay.common.filter;
 
-
 import com.ay.common.utils.StringUtils;
 import org.springframework.http.MediaType;
 
@@ -10,8 +9,8 @@ import java.io.IOException;
 
 /**
  * Repeatable 过滤器
- *
- * @author campus
+ * 
+ * @author ruoyi
  */
 public class RepeatableFilter implements Filter
 {

@@ -1,10 +1,9 @@
 package com.ay.common.constant;
 
-
 /**
  * 缓存的key 常量
- *
- * @author campus
+ * 
+ * @author ruoyi
  */
 public class CacheConstants
 {
@@ -37,4 +36,9 @@ public class CacheConstants
      * 限流 redis key
      */
     public static final String RATE_LIMIT_KEY = "rate_limit:";
+
+    /**
+     * 登录账户密码错误次数 redis key
+     */
+    public static final String PWD_ERR_CNT_KEY = "pwd_err_cnt:";
 }

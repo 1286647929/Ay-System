@@ -1,12 +1,11 @@
 package com.ay.common.exception.file;
 
-
 import com.ay.common.exception.base.BaseException;
 
 /**
  * 文件信息异常类
  * 
- * @author campus
+ * @author ruoyi
  */
 public class FileException extends BaseException
 {

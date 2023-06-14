@@ -1,13 +1,12 @@
 package com.ay.common.exception.base;
 
-
 import com.ay.common.utils.MessageUtils;
 import com.ay.common.utils.StringUtils;
 
 /**
  * 基础异常
  * 
- * @author campus
+ * @author ruoyi
  */
 public class BaseException extends RuntimeException
 {

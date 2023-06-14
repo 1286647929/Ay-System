@@ -1,8 +1,8 @@
 package com.ay.web.exception;
 
+import com.ay.common.constant.HttpStatus;
 import com.ay.common.core.domain.AjaxResult;
 import com.ay.common.exception.ServiceException;
-import com.ay.common.utils.HttpStatus;
 import com.ay.common.utils.StringUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;

@@ -6,17 +6,15 @@ import com.ay.common.core.redis.RedisCache;
 import com.ay.common.exception.user.CaptchaException;
 import com.ay.common.exception.user.CaptchaExpireException;
 import com.ay.common.exception.user.UserPasswordNotMatchException;
-import com.ay.common.utils.StringUtils;
 import com.ay.common.utils.sign.RSA;
 import com.ay.entity.SysUser;
-import com.ay.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SysLoginService {
     @Autowired
-    private UserService userService;
+    private ISysUserService ISysUserService;
 
     @Autowired
     private RedisCache redisCache;
@@ -33,7 +31,7 @@ public class SysLoginService {
 //        validateCaptcha(userName, code, uuid);
 
         //用户验证
-        SysUser sysUser = userService.authenLogin(userName);
+        SysUser sysUser = ISysUserService.authenLogin(userName);
         if(sysUser!=null){
             String decryptPassword = RSA.rsaDecryptByPrivate(sysUser.getPassword());
             if (password.equals(decryptPassword)){

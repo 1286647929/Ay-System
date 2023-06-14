@@ -1,6 +1,5 @@
 package com.ay.common.filter;
 
-
 import com.ay.common.constant.Constants;
 import com.ay.common.utils.http.HttpHelper;
 
@@ -16,8 +15,8 @@ import java.io.InputStreamReader;
 
 /**
  * 构建可重复读取inputStream的request
- *
- * @author campus
+ * 
+ * @author ruoyi
  */
 public class RepeatedlyRequestWrapper extends HttpServletRequestWrapper
 {

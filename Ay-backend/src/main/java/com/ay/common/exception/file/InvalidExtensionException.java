@@ -1,14 +1,11 @@
 package com.ay.common.exception.file;
 
-
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
-
 import java.util.Arrays;
 
 /**
  * 文件上传 误异常类
  * 
- * @author campus
+ * @author ruoyi
  */
 public class InvalidExtensionException extends FileUploadException
 {

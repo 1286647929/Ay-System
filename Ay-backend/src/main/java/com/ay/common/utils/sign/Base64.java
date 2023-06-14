@@ -1,10 +1,9 @@
 package com.ay.common.utils.sign;
 
-
 /**
  * Base64工具类
- *
- * @author campus
+ * 
+ * @author ruoyi
  */
 public final class Base64
 {

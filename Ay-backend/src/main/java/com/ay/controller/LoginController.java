@@ -2,10 +2,11 @@ package com.ay.controller;
 
 import com.ay.common.constant.Constants;
 import com.ay.common.core.domain.AjaxResult;
+import com.ay.common.core.domain.entity.SysMenu;
+import com.ay.common.core.domain.entity.SysUser;
 import com.ay.common.core.domain.model.LoginBody;
 import com.ay.common.utils.SecurityUtils;
-import com.ay.entity.SysUser;
-import com.ay.service.ISysMenuService;
+import com.ay.system.service.ISysMenuService;
 import com.ay.web.service.SysLoginService;
 import com.ay.web.service.SysPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -65,5 +67,18 @@ public class LoginController {
         ajax.put("roles", roles);
         ajax.put("permissions", permissions);
         return ajax;
+    }
+
+    /**
+     * 获取路由信息
+     *
+     * @return 路由信息
+     */
+    @GetMapping("/getRouters")
+    public AjaxResult getRouters()
+    {
+        Long userId = securityUtils.getUserId();
+        List<SysMenu> menus = menuService.selectMenuTreeByUserId(userId);
+        return AjaxResult.success(menuService.buildMenus(menus));
     }
 }

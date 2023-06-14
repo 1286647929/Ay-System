@@ -2,8 +2,6 @@ package com.ay.web.service;
 
 
 import com.ay.entity.SysUser;
-import com.ay.service.ISysMenuService;
-import com.ay.service.ISysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +11,6 @@ import java.util.Set;
 /**
  * 用户权限处理
  *
- * @author campus
  */
 @Component
 public class SysPermissionService
