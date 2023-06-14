@@ -1,7 +1,9 @@
 package com.ay.web.service;
 
 
-import com.ay.entity.SysUser;
+import com.ay.common.core.domain.entity.SysUser;
+import com.ay.system.service.ISysMenuService;
+import com.ay.system.service.ISysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

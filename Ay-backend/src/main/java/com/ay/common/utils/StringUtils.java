@@ -607,4 +607,14 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
         }
         return sb.toString();
     }
+
+    /**
+     * 匹配两个字符串是否相等
+     * @param s1
+     * @param s2
+     * @return
+     */
+    public static boolean equals(final String s1, final String s2) {
+        return s1.equals(s2);
+    }
 }

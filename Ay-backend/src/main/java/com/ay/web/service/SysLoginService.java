@@ -2,12 +2,13 @@ package com.ay.web.service;
 
 import cn.dev33.satoken.stp.StpUtil;
 import com.ay.common.constant.CacheConstants;
+import com.ay.common.core.domain.entity.SysUser;
 import com.ay.common.core.redis.RedisCache;
 import com.ay.common.exception.user.CaptchaException;
 import com.ay.common.exception.user.CaptchaExpireException;
 import com.ay.common.exception.user.UserPasswordNotMatchException;
+import com.ay.common.utils.StringUtils;
 import com.ay.common.utils.sign.RSA;
-import com.ay.entity.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

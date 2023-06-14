@@ -1,8 +1,15 @@
 package com.ay.common.utils;
 
+import cn.dev33.satoken.stp.StpUtil;
+import com.ay.common.annotation.Log;
 import com.ay.common.constant.HttpStatus;
+import com.ay.common.core.domain.entity.SysUser;
 import com.ay.common.core.domain.model.LoginUser;
 import com.ay.common.exception.ServiceException;
+import com.ay.common.utils.sign.RSA;
+import com.ay.web.service.AuthUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -10,8 +17,12 @@ import com.ay.common.exception.ServiceException;
  * 
  * @author ruoyi
  */
-public class SecurityUtils
-{
+@Component
+public class SecurityUtils {
+
+    @Autowired
+    private AuthUser authUser;
+
     /**
      * 用户ID
      **/
@@ -45,7 +56,7 @@ public class SecurityUtils
     /**
      * 获取用户账户
      **/
-    public static String getUsername()
+    public String getUsername()
     {
         try
         {
@@ -60,24 +71,19 @@ public class SecurityUtils
     /**
      * 获取用户
      **/
-    public static LoginUser getLoginUser()
+    public LoginUser getLoginUser()
     {
         try
         {
-            return (LoginUser) getAuthentication().getPrincipal();
+            LoginUser loginUser = new LoginUser();
+            SysUser user = authUser.getLoginUser(Long.valueOf(String.valueOf(StpUtil.getTokenInfo().getLoginId())));
+            loginUser.setUserId(user.getUserId());
+            return loginUser;
         }
         catch (Exception e)
         {
             throw new ServiceException("获取用户信息异常", HttpStatus.UNAUTHORIZED);
         }
-    }
-
-    /**
-     * 获取Authentication
-     */
-    public static Authentication getAuthentication()
-    {
-        return SecurityContextHolder.getContext().getAuthentication();
     }
 
     /**
@@ -88,8 +94,7 @@ public class SecurityUtils
      */
     public static String encryptPassword(String password)
     {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.encode(password);
+        return RSA.rsaEncryptByPublic(password);
     }
 
     /**
@@ -101,8 +106,8 @@ public class SecurityUtils
      */
     public static boolean matchesPassword(String rawPassword, String encodedPassword)
     {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.matches(rawPassword, encodedPassword);
+        String decodePassword = RSA.rsaDecryptByPrivate(encodedPassword);
+        return StringUtils.equals(decodePassword, rawPassword);
     }
 
     /**

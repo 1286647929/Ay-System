@@ -57,7 +57,7 @@ public class LoginController {
     @GetMapping("/getInfo")
     public AjaxResult getInfo()
     {
-        SysUser user = securityUtils.getLoginUser();
+        SysUser user = securityUtils.getLoginUser().getUser();
         // 角色集合
         Set<String> roles = permissionService.getRolePermission(user);
         // 权限集合
