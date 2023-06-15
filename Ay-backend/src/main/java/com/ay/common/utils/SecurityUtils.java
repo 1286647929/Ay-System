@@ -11,12 +11,9 @@ import com.ay.common.utils.ip.AddressUtils;
 import com.ay.common.utils.ip.IpUtils;
 import com.ay.common.utils.sign.RSA;
 import com.ay.system.service.ISysUserService;
-import com.ay.web.service.SysPermissionService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 
 /**
@@ -29,9 +26,6 @@ public class SecurityUtils {
 
     @Autowired
     private ISysUserService userService;
-
-    @Autowired
-    private SysPermissionService permissionService;
 
     /**
      * 用户ID
@@ -85,9 +79,7 @@ public class SecurityUtils {
     {
         try
         {
-            ServletRequestAttributes servletRequestAttributes =
-                    (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
-            HttpServletRequest request = servletRequestAttributes.getRequest();
+            HttpServletRequest request = ServletUtils.getRequest();
 
             LoginUser loginUser = new LoginUser();
             SaTokenInfo tokenInfo = StpUtil.getTokenInfo();
@@ -95,13 +87,12 @@ public class SecurityUtils {
             loginUser.setToken(tokenInfo.getTokenValue());
             loginUser.setUserId(user.getUserId());
             loginUser.setDeptId(user.getDeptId());
-            loginUser.setLoginTime(Long.valueOf(DateUtils.getDate()));
+            loginUser.setLoginTime(user.getLoginDate().getTime());
             loginUser.setExpireTime(tokenInfo.getTokenTimeout());
-            loginUser.setIpaddr(IpUtils.getIpAddr());
+            loginUser.setIpaddr(IpUtils.getIpAddr(request));
             loginUser.setLoginLocation(AddressUtils.getRealAddressByIP(IpUtils.getIpAddr()));
             loginUser.setBrowser(UserAgentUtils.getBrowser(request));
             loginUser.setOs(UserAgentUtils.getOs(request));
-            loginUser.setPermissions(permissionService.getMenuPermission(user));
             loginUser.setUser(user);
             return loginUser;
         }

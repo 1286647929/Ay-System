@@ -2,8 +2,8 @@ package com.ay.common.utils.ip;
 
 import com.ay.common.utils.ServletUtils;
 import com.ay.common.utils.StringUtils;
+import jakarta.servlet.http.HttpServletRequest;
 
-import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 

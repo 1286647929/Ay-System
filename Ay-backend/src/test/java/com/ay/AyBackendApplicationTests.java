@@ -1,7 +1,8 @@
 package com.ay;
 
+import com.ay.common.core.domain.entity.SysUser;
 import com.ay.common.utils.sign.RSA;
-import com.ay.entity.SysUser;
+import com.ay.system.service.ISysUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class AyBackendApplicationTests {
     @Autowired
-    private ISysUserService ISysUserService;
+    private ISysUserService userService;
 
     @Test
     void contextLoads() throws Exception {
@@ -27,7 +28,7 @@ class AyBackendApplicationTests {
     @Test
     public void test(){
 //        List<SysUser> sysUsers = userService.findAll();
-        SysUser sysUsers = ISysUserService.findUserById(1);
+        SysUser sysUsers = userService.selectUserById(1L);
         System.out.println("测试结果"+sysUsers);
 //        userService.getById(1);
     }
