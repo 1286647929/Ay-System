@@ -36,6 +36,9 @@ public class SysDeptServiceImpl implements ISysDeptService
     @Autowired
     private SysRoleMapper roleMapper;
 
+    @Autowired
+    private SecurityUtils securityUtils;
+
     /**
      * 查询部门管理数据
      * 
@@ -191,7 +194,7 @@ public class SysDeptServiceImpl implements ISysDeptService
     @Override
     public void checkDeptDataScope(Long deptId)
     {
-        if (!SysUser.isAdmin(SecurityUtils.getUserId()))
+        if (!SysUser.isAdmin(securityUtils.getUserId()))
         {
             SysDept dept = new SysDept();
             dept.setDeptId(deptId);

@@ -1,5 +1,6 @@
 package com.ay.common.utils.bean;
 
+
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;

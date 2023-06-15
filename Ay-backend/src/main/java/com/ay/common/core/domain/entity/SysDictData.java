@@ -4,10 +4,11 @@ import com.ay.common.annotation.Excel;
 import com.ay.common.annotation.Excel.ColumnType;
 import com.ay.common.constant.UserConstants;
 import com.ay.common.core.domain.BaseEntity;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  * 字典数据表 sys_dict_data

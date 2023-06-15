@@ -6,12 +6,12 @@ import com.ay.common.annotation.Excel.Type;
 import com.ay.common.annotation.Excels;
 import com.ay.common.core.domain.BaseEntity;
 import com.ay.common.xss.Xss;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 

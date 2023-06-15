@@ -11,10 +11,10 @@ import com.ay.common.utils.StringUtils;
 import com.ay.system.domain.SysConfig;
 import com.ay.system.mapper.SysConfigMapper;
 import com.ay.system.service.ISysConfigService;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.Collection;
 import java.util.List;
 

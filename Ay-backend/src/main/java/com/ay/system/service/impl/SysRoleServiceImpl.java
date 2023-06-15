@@ -42,6 +42,9 @@ public class SysRoleServiceImpl implements ISysRoleService
     @Autowired
     private SysRoleDeptMapper roleDeptMapper;
 
+    @Autowired
+    private SecurityUtils securityUtils;
+
     /**
      * 根据条件分页查询角色数据
      * 
@@ -194,7 +197,7 @@ public class SysRoleServiceImpl implements ISysRoleService
     @Override
     public void checkRoleDataScope(Long roleId)
     {
-        if (!SysUser.isAdmin(SecurityUtils.getUserId()))
+        if (!SysUser.isAdmin(securityUtils.getUserId()))
         {
             SysRole role = new SysRole();
             role.setRoleId(roleId);

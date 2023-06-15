@@ -58,6 +58,9 @@ public class SysUserServiceImpl implements ISysUserService
     @Autowired
     protected Validator validator;
 
+//    @Autowired
+//    private SecurityUtils securityUtils;
+
     /**
      * 根据条件分页查询用户列表
      * 
