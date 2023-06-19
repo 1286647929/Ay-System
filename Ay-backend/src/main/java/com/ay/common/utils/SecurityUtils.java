@@ -34,7 +34,7 @@ public class SecurityUtils {
     {
         try
         {
-            return (Long) StpUtil.getTokenInfo().getLoginId();
+            return Long.valueOf(String.valueOf(StpUtil.getTokenInfo().getLoginId()));
         }
         catch (Exception e)
         {
